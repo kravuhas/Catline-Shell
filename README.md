@@ -2,7 +2,7 @@
 
 CatLine é um shell customizado em C++ com foco em segurança ofensiva (Red Team) e análise de risco em tempo real.
 
-O projeto foi desenvolvido com o objetivo de explorar como um terminal pode ir além da simples execução de comandos, incorporando consciência de segurança, classificação de risco e suporte a auditoria de rede.
+O projeto explora como um terminal pode evoluir além da simples execução de comandos, incorporando consciência de segurança, classificação de risco e suporte a auditoria de rede.
 
 ---
 
@@ -22,21 +22,42 @@ A proposta é simular um ambiente onde cada comando é tratado com contexto de s
 
 ## 🧠 Filosofia do Projeto
 
-Este projeto não é apenas sobre execução de comandos.
-
-Ele representa a ideia de:
+Este projeto não é apenas sobre execução de comandos, mas sobre **consciência operacional**.
 
 > “Um sistema que entende o impacto do que está sendo executado.”
 
-Além disso, o desenvolvimento foi feito utilizando IA como ferramenta de apoio — não como substituição de conhecimento.
+---
 
-A IA foi usada para:
+## 📈 Evolução do Projeto
+
+### 🔹 v1 — Mini Shell (implementação manual)
+
+Primeira versão desenvolvida manualmente para compreender os fundamentos de sistemas Unix:
+
+* Criação de processos com `fork()`
+* Execução de programas com `execvp()`
+* Parsing de comandos
+
+Essa etapa foi essencial para construir a base técnica do projeto.
+
+---
+
+### 🔹 v2 — CatLine Security Shell
+
+Evolução do projeto com foco em segurança e análise de risco:
+
+* Classificação de comandos por nível de risco
+* Integração com Nmap (atalhos inteligentes)
+* Sistema de logging (txt + JSON)
+* Análise de “ruído” de scans (IDS/IPS awareness)
+
+Nesta fase, utilizei IA como ferramenta de apoio para:
 
 * acelerar desenvolvimento
-* explorar ideias de arquitetura
-* refinar lógica de segurança
+* explorar melhorias arquiteturais
+* refinar a lógica de análise
 
-Mas todas as decisões estruturais e entendimento técnico foram guiados manualmente.
+Todas as decisões técnicas e entendimento do sistema foram conduzidos manualmente.
 
 ---
 
@@ -45,16 +66,16 @@ Mas todas as decisões estruturais e entendimento técnico foram guiados manualm
 ### 🔹 Núcleo (C++)
 
 * Gerenciamento de processos com `fork()` + `execvp()`
-* Interpretação de comandos
+* Interpretação e execução de comandos
 * Sistema de atalhos para Nmap
 * Logging em tempo real
 
 ### 🔹 Camada de Análise (Python)
 
-* Motor heurístico baseado em regras (regex + scoring)
-* Classificação de risco de comandos
+* Motor heurístico (regex + scoring)
+* Classificação de risco
 * Detecção de padrões suspeitos
-* Análise de “ruído” de scans (IDS/IPS awareness)
+* Análise de comportamento de scans
 
 ---
 
@@ -71,14 +92,14 @@ Mas todas as decisões estruturais e entendimento técnico foram guiados manualm
 
 ## 📡 Integração com Nmap
 
-O CatLine inclui atalhos inteligentes para scans, como:
+Atalhos disponíveis:
 
 * `scan-fast` → Scan rápido
-* `scan-stealth` → Scan furtivo com evasão
+* `scan-stealth` → Scan furtivo
 * `scan-full` → Scan completo (alto ruído)
 * `scan-vuln` → Scripts de vulnerabilidade
 
-Além disso, o sistema classifica automaticamente o nível de “ruído” do scan, simulando detecção por IDS/SIEM.
+O sistema também classifica automaticamente o nível de ruído, simulando detecção por IDS/SIEM.
 
 ---
 
@@ -90,12 +111,10 @@ Além disso, o sistema classifica automaticamente o nível de “ruído” do sc
 
 ---
 
-## 🎯 Objetivo
+## 🎯 Objetivos
 
-Este projeto foi criado para:
-
-* Aprender conceitos de sistemas Unix (processos, exec)
-* Explorar segurança ofensiva (Red Team mindset)
+* Consolidar conhecimentos de sistemas Unix
+* Explorar conceitos de segurança ofensiva
 * Simular análise de risco em tempo real
 * Integrar automação com consciência de segurança
 
@@ -103,43 +122,26 @@ Este projeto foi criado para:
 
 ## ⚠️ Aviso
 
-Este projeto é destinado exclusivamente para fins educacionais.
+Este projeto é educacional.
 
-Qualquer uso de ferramentas de rede deve ser feito apenas em ambientes autorizados.
-
----
-
-## 🧪 Evolução
-
-O projeto começou como um shell extremamente simples:
-
-* leitura de input
-* execução com `execvp`
-
-E evoluiu para um sistema com:
-
-* análise de risco
-* logging estruturado
-* integração com ferramentas de segurança
+Ferramentas de rede devem ser utilizadas apenas em ambientes autorizados.
 
 ---
 
-## 🔮 Futuro
+## 🔮 Próximos Passos
 
-Possíveis melhorias:
-
-* Integração com LLM local (ex: análise contextual)
 * Execução em sandbox (Docker / namespaces)
-* Detecção de comportamento em sequência (session-aware)
+* Análise de comandos em sequência (session-aware)
 * Interface interativa mais avançada
+* Integração opcional com modelos de linguagem locais
 
 ---
 
-## 👨‍💻 Sobre o desenvolvimento
+## 👨‍💻 Sobre o Desenvolvimento
 
-Este projeto reflete uma abordagem moderna de aprendizado:
+Este projeto segue uma abordagem moderna:
 
-> Não apenas programar, mas entender sistemas e usar IA como ferramenta para acelerar evolução.
+> Combinar fundamentos sólidos de sistemas com uso estratégico de IA como ferramenta de engenharia.
 
 ---
 
@@ -147,6 +149,4 @@ Este projeto reflete uma abordagem moderna de aprendizado:
 
 CatLine não é apenas um shell.
 
-É um experimento de como terminais podem evoluir para sistemas conscientes de segurança.
-
----
+É uma exploração prática de como sistemas podem evoluir para se tornarem mais conscientes, seguros e contextuais.
